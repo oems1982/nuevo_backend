@@ -1,28 +1,31 @@
 const { Schema, model } = require("mongoose");
 
-const categoriesSchema = new Schema(
+const categorySchema = new Schema(
   {
-    //  nombre de la categoria
+    // Primer nombre del categoria
     name: { 
+      type: String,
+      required: [true, "El primer nombre es obligatorio"],
+      trim: true,
+      unique: true
+      
+    },
+    
+    // Descripción de la categpría
+    description: {
       type: String,
       required: [true, "El nombre es obligatorio"],
       trim: true,
-      unique: true,
     },
-    // descripcion de la categoria
-    description: {
-      type: String,
-      required: [true, "la descripcion es obligatoria"],
-      trim: true,
-    },
-      // URL o ruta de la foto asociada al autor
+
+    // URL o ruta de la foto asociada al categoria
     image: {
       type: String,
-      required: [true, "la imagen es obligatoria"],
+      required: [true, "La imagen es obligatoria"],
       default: "",
     },
 
-    // Estado del autor (activo/inactivo) — por defecto true
+    // Estado del categoria (activo/inactivo) — por defecto true
     is_active: {
       type: Boolean,
       default: true,
@@ -35,4 +38,4 @@ const categoriesSchema = new Schema(
   }
 );
 
-module.exports = model("Category", categoriesSchema );
+module.exports = model("Category", categorySchema );

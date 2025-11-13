@@ -1,24 +1,18 @@
 const { Schema, model } = require("mongoose");
 
-const authorSchema = new Schema(
+const userSchema = new Schema(
   {
     // Primer nombre del autor
-    first_name: { 
+    first_name: {
       type: String,
       required: [true, "El primer nombre es obligatorio"],
       trim: true,
-      
     },
     // Apellido(s) del autor
     last_name: {
       type: String,
       required: [true, "El/los apellido(s) son obligatorios"],
       trim: true,
-    },
-    // Biografía o reseña (opcional, pero recomendada)
-    biography: {
-      type: String,
-      default: "",
     },
 
     // URL o ruta de la foto asociada al autor
@@ -27,6 +21,16 @@ const authorSchema = new Schema(
       default: "",
     },
 
+    email: {
+      type: String,
+      required: [true, "El email es obligatorio"],
+      unique: true,
+    },
+
+    password: {
+      type: String,
+      required: [true, "El password es obligatorio"],
+    },
     // Estado del autor (activo/inactivo) — por defecto true
     is_active: {
       type: Boolean,
@@ -36,8 +40,8 @@ const authorSchema = new Schema(
   {
     timestamps: true, // agrega createdAt y updatedAt automáticamente
     versionKey: false, // elimina el campo __v
-    collection: "authors", // nombre explícito de la colección
+    collection: "users", // nombre explícito de la colección
   }
 );
 
-module.exports = model("Author", authorSchema );
+module.exports = model("User", userSchema);
