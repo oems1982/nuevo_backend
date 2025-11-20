@@ -1,24 +1,24 @@
 const { Schema, model } = require("mongoose");
 
-const categorySchema = new Schema(
+const plantillaSchema = new Schema(
   {
-    // Primer nombre del categoria
+    // Nombre de la plantilla
     name: { 
       type: String,
-      required: [true, "El nombre es obligatorio"],
+      required: [true, "El nombre de la plantilla es obligatorio"],
       trim: true,
-      unique: true,
+      unique: true
       
     },
     
-    // Descripción de la categpría
+    // Descripción de la plantilla
     description: {
       type: String,
-      required: [true, "La descripcion es obligatoria"],
+      required: [true, "La descripcion de la plantilla es obligatorio"],
       trim: true,
     },
 
-    // URL o ruta de la foto asociada al categoria
+    // URL o ruta de la foto o previsualizacion de la plantilla
     image: {
       type: String,
       required: [true, "La imagen es obligatoria"],
@@ -34,8 +34,8 @@ const categorySchema = new Schema(
   {
     timestamps: true, // agrega createdAt y updatedAt automáticamente
     versionKey: false, // elimina el campo __v
-    collection: "categories", // nombre explícito de la colección
+    collection: "plantillas", // nombre explícito de la colección
   }
 );
 
-module.exports = model("Category", categorySchema );
+module.exports = model("Plantilla", plantillaSchema );
