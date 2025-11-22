@@ -14,14 +14,12 @@ const plantillaSchema = new Schema(
     // Descripción de la plantilla
     description: {
       type: String,
-      required: [true, "La descripcion de la plantilla es obligatorio"],
       trim: true,
     },
 
     // URL o ruta de la foto o previsualizacion de la plantilla
     image: {
       type: String,
-      required: [true, "La imagen es obligatoria"],
       default: "",
     },
 
