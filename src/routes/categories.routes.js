@@ -10,7 +10,7 @@ router.post('/', create);
 
 router.get('/:id', show);
 
-router.get('/byname/:first_name', showByName);
+router.get('/byname/:name', showByName);
 
 router.put('/:id', update);
 
