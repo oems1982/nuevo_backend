@@ -72,6 +72,41 @@ const index = async (req, res) => {
   }
 };
 
+/**
+ * GET /carnets/documento/:documento
+ * Busca un carnet por documento (cédula)
+ */
+const showByDocumento = async (req, res) => {
+  try {
+    const { documento } = req.params;
+
+    // Buscar coincidencia exacta
+    const carnet = await Carnet.findOne({ documento });
+
+    if (!carnet) {
+      return res.status(404).json({
+        status: false,
+        message: `No existe un carnet con el documento: ${documento}`,
+        data: null,
+      });
+    }
+
+    return res.status(200).json({
+      status: true,
+      message: "Carnet encontrado correctamente",
+      data: carnet,
+    });
+  } catch (error) {
+    console.error("Error al buscar carnet por documento:", error);
+    return res.status(500).json({
+      status: false,
+      message: "Error interno del servidor: " + error.message,
+      data: null,
+    });
+  }
+};
+
+
 const show = async (req, res) => {
   try {
     /**Recuperar el id del registro a mostrar */
@@ -214,5 +249,6 @@ module.exports = {
   create,
   update,
   destroy,
+  showByDocumento,
   showByName,
 };
