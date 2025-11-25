@@ -18,7 +18,7 @@ router.get('/', index);
 router.post('/', create);
 
 // 👉 NUEVA RUTA (debe estar antes de '/:id')
-router.get('/documento/:documento', validateJWT, showByDocumento);
+router.get('/documento/:documento', showByDocumento);
 
 router.get('/:id', validateJWT, show);
 
