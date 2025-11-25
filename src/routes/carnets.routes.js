@@ -8,7 +8,7 @@ const {
   show, 
   showByName, 
   destroy,
-  showByDocumento
+  showByDocumento,
 } = require("../controllers/carnets.controller");
 
 const { validateJWT } =  require('../middlewares/validate-jwt.middleware');

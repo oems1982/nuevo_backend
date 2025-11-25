@@ -78,7 +78,7 @@ const index = async (req, res) => {
  */
 const showByDocumento = async (req, res) => {
   try {
-    const { documento } = req.params;
+    const { documento } = req.params; bnv,b,n
 
     // Buscar coincidencia exacta
     const carnet = await Carnet.findOne({ documento });
